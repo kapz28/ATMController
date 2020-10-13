@@ -144,7 +144,7 @@ Account*  Admin::retreiveAccount(int account, int pin)
 
             cout << "-----------------------------" << endl;
             cout << "|  Welcome back Mr./Mrs  |" << endl;
-            cout << "|" << database[i].lastName << " " << database[i].firstName << "|" << endl;
+            cout << "|" << database[i].firstName << " " << database[i].lastName << "|" << endl;
             cout << "-----------------------------\n\n" << endl;
 			return &database[i];
 		}
