@@ -125,7 +125,9 @@ void  Account::viewBalance(int account)
 
 Admin::Admin()
 {
-
+    createAccount(1234567890,1234,"Kapilan","Satkunanathan");
+    createAccount(1234567891,1235,"Bear","Robotics");
+    createAccount(1234567892,1236,"Elon","Musk");
 }
 
 void Admin::createAccount(int accountnumber, int pin,string firstname, string lastname)
@@ -178,22 +180,10 @@ int chooseaccount()
 }
 
 
-// Create a bunch of accounts to work with
-void initialize(Admin& bank){
-    bank.createAccount(1234567890,1234,"Kapilan","Satkunanathan");
-    bank.createAccount(1234567891,1235,"Bear","Robotics");
-    bank.createAccount(1234567892,1236,"Elon","Musk");
-}
-
-
-
 // Assume only main program is exposed
 int main()
 {
     Admin bankofAmerica;
-    initialize(bankofAmerica);
-
-
     Account* myaccount = NULL;
     int accounttype  = 0;
     int accountnumber;
