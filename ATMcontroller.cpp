@@ -5,10 +5,14 @@
 #include <stdio.h>
 
 // Kapilan Satkunanathan
+// Bear robotics
 
 using namespace std;
+
+// This is what each account holds
 class Account
 {
+    // Give access for bank to access sensitive info like pin
     friend class Admin;
 	private:
 		string firstName, lastName;
@@ -19,19 +23,21 @@ class Account
         Account(int accountnumber, int pin,string firstname, string lastname);
 
 
+    // Once account retreived through verification these are possible options
 	public:
-
 		void withdraw(int amount, int account);
         void deposit(int amount, int account);
         void viewBalance(int account);
 };
 
+//This represents the banks database
 class Admin
 {
+    // Holds all the accounts
 	private:
         vector<Account> database;
 
-
+    // can create or retreive account
 	public:
         Admin();
         void createAccount(int accountnumber, int pin,string firstname, string lastname);
@@ -135,6 +141,11 @@ Account*  Admin::retreiveAccount(int account, int pin)
 	}
 	for(int i = 0; i < database.size(); i++){
 		if(database[i].pinNumber == pin && database[i].accountNumber == account){
+
+            cout << "-----------------------------" << endl;
+            cout << "|  Welcome back Mr./Mrs  |" << endl;
+            cout << "|" << database[i].lastName << " " << database[i].firstName << "|" << endl;
+            cout << "-----------------------------\n\n" << endl;
 			return &database[i];
 		}
 	}
@@ -166,16 +177,23 @@ int chooseaccount()
     return 0;
 }
 
+
+// Create a bunch of accounts to work with
 void initialize(Admin& bank){
     bank.createAccount(1234567890,1234,"Kapilan","Satkunanathan");
     bank.createAccount(1234567891,1235,"Bear","Robotics");
     bank.createAccount(1234567892,1236,"Elon","Musk");
 }
 
+
+
+// Assume only main program is exposed
 int main()
 {
     Admin bankofAmerica;
     initialize(bankofAmerica);
+
+
     Account* myaccount = NULL;
     int accounttype  = 0;
     int accountnumber;
