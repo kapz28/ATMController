@@ -50,6 +50,10 @@ Account::Account(int accountnumbertemp, int pin,string firstnamevar, string last
 
 void  Account::withdraw(int amount, int account)
 {
+    if(amount < 0){
+        cout << "\n\nInvalid Input" << endl;
+        return;
+    }
 	if(account){
 		if(amount>checkingAmount){
 			cout << "\n\nYou don't have enough funds!" << endl;
@@ -78,6 +82,10 @@ void  Account::withdraw(int amount, int account)
 
 void  Account::deposit(int amount, int account)
 {
+    if(amount < 0){
+        cout << "\n\nInvalid Input" << endl;
+        return;
+    }
 	if(account){
 		checkingAmount = checkingAmount+amount;
 		cout << "\n\nYour amount has been deposited" << endl;
@@ -147,7 +155,7 @@ int chooseaccount()
         if(!cin){
             cin.clear();
             cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            cout << "\n\nERROR INVALID OPTION\n\n" << endl;
+            cout << "\n\nERROR INVALID Input\n\n" << endl;
         }
         else if(r == 1 || r == 0){
             cout << "\n\nACCOUNT RETREIVED\n\n" << endl;
@@ -248,7 +256,7 @@ int main()
                     if(!cin){
                         cin.clear();
                         cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-                        cout << "\n\nERROR INVALID OPTION\n\n" << endl;
+                        cout << "\n\nERROR INVALID INPUT\n\n" << endl;
                     }else{
                         myaccount->withdraw(var,accounttype);
                     }
@@ -280,7 +288,7 @@ int main()
                 }
 
             }else{
-                cout << "\n\nINVALID OPTION\n\n" << endl;
+                cout << "\n\nINVALID INPUT\n\n" << endl;
             }
         }
     }
